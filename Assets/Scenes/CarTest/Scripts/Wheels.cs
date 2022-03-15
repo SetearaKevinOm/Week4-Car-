@@ -15,15 +15,7 @@ public class Wheels : MonoBehaviour
     public AnimationCurve animationCurve;
 
     public Vector3 force;
-
-  
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -39,8 +31,6 @@ public class Wheels : MonoBehaviour
             Debug.DrawRay(transform.position,ray.direction);
             carObject.GetComponent<Rigidbody>().AddRelativeForce(force);
         }
-
         
-        //localVelocity = transform.InverseTransformDirection(GetComponent<Controls>().carPrefabRigidbody.velocity);
     }
 }

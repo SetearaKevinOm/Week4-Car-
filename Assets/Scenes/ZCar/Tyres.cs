@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Tyres : MonoBehaviour
 {
@@ -29,8 +30,8 @@ public class Tyres : MonoBehaviour
         
         
         Ray ray = new Ray();
-        ray.direction = transform.TransformDirection(Vector3.left);
-        ray.origin = transform.position;
+        ray.direction = transform.TransformDirection(Vector3.down);
+        ray.origin = gameObject.transform.position;
         RaycastHit raycastHit = new RaycastHit();
         force = new Vector3(0f, rayMaxDistance, 0f);
         //suspensionHeight = raycastHit.distance; 
@@ -51,7 +52,21 @@ public class Tyres : MonoBehaviour
             Debug.Log(raycastHit.distance); 
         }
 
-        /*if (raycastHit.distance > 0.5f)
+        /*if (Input.GetKey(left))
+        {
+            //rightFrontTyre.transform.localRotation = Quaternion.Euler(0f,45f,0f);
+            //leftFrontTyre.transform.localRotation = Quaternion.Euler(0f,45f,0f);
+            GetComponent<Body>().carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, -5f, 0f));
+        }
+
+        if (Input.GetKey(right))
+        {
+            //rightFrontTyre.transform.localRotation = Quaternion.Euler(0f,-45f,0f);
+            //leftFrontTyre.transform.localRotation = Quaternion.Euler(0f,-45f,0f);
+            GetComponent<Body>().carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, -5f, 0f));
+        }
+        /*
+        if (raycastHit.distance > 0.5f)
         {
             carObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f,-rayMaxDistance,0f));
         }
@@ -59,7 +74,8 @@ public class Tyres : MonoBehaviour
         if (raycastHit.distance <= 0.5f)
         {
             carObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f,rayMaxDistance,0f));
-        }*/
+        }
+        #1#*/
 
     }
 }
