@@ -56,20 +56,20 @@ public class Body : MonoBehaviour
         
         if (Input.GetKey(left))
         {
-            frontTyres[0].transform.localRotation =  Quaternion.Euler(0f,0f,60f);
-            frontTyres[1].transform.localRotation =  Quaternion.Euler(0f,0f,60f);
+            //frontTyres[0].transform.localRotation =  Quaternion.Euler(0f,0f,60f);
+            //frontTyres[1].transform.localRotation =  Quaternion.Euler(0f,0f,60f);
             //rightFrontTyre.transform.localRotation = Quaternion.Euler(0f,45f,0f);
             //leftFrontTyre.transform.localRotation = Quaternion.Euler(0f,45f,0f);
-            //GetComponent<Body>().carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, -5f, 0f));
+            GetComponent<Body>().carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, -5f, 0f));
         }
 
         if (Input.GetKey(right))
         {
-            frontTyres[0].transform.localRotation =  Quaternion.Euler(0f,0f,-60f);
-            frontTyres[1].transform.localRotation =  Quaternion.Euler(0f,0f,-60f);
+            //frontTyres[0].transform.localRotation =  Quaternion.Euler(0f,0f,-60f);
+            //frontTyres[1].transform.localRotation =  Quaternion.Euler(0f,0f,-60f);
             //rightFrontTyre.transform.localRotation = Quaternion.Euler(0f,-45f,0f);
             //leftFrontTyre.transform.localRotation = Quaternion.Euler(0f,-45f,0f);
-            //GetComponent<Body>().carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, 5f, 0f));
+            GetComponent<Body>().carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, 5f, 0f));
         }
 
         /*if (Input.GetKey(left))

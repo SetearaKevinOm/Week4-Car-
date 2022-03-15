@@ -6,19 +6,20 @@ using Quaternion = UnityEngine.Quaternion;
 
 public class SceneManager : MonoBehaviour
 {
-    public GameObject carObject;
-    public GameObject cO;
+    public List<VehicleBase> carPrefabs;
+    public VehicleBase cO;
     public GameObject mainCamera;
-    // Start is called before the first frame update
+    public VehicleManager vehicleManager;
+  
     void Start()
     {
-        cO = Instantiate(carObject);
-        Instantiate(mainCamera, cO.transform);
+        for (int i = 0; i < carPrefabs.Count; i++)
+        {
+               cO = Instantiate(carPrefabs[i]);
+               vehicleManager.vehicles.Add(cO);
+               //Instantiate(mainCamera, cO.transform);
+        }
+     
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-      
-    }
+    
 }

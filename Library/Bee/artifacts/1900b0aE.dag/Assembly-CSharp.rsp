@@ -352,9 +352,14 @@
 "Assets/Scenes/CarTest/Scripts/Controls.cs"
 "Assets/Scenes/CarTest/Scripts/GameManager.cs"
 "Assets/Scenes/CarTest/Scripts/Wheels.cs"
+"Assets/Scenes/ZCar/BlueCar.cs"
 "Assets/Scenes/ZCar/Body.cs"
+"Assets/Scenes/ZCar/PlayerController.cs"
+"Assets/Scenes/ZCar/RedCar.cs"
 "Assets/Scenes/ZCar/SceneManager.cs"
 "Assets/Scenes/ZCar/Tyres.cs"
+"Assets/Scenes/ZCar/VehicleBase.cs"
+"Assets/Scenes/ZCar/VehicleManager.cs"
 -langversion:9.0
 
 /deterministic

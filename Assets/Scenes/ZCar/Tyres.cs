@@ -49,7 +49,7 @@ public class Tyres : MonoBehaviour
                 carObject.GetComponent<Rigidbody>().AddForceAtPosition(force, ray.origin);
             }
             //carObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f,-rayMaxDistance,0f));
-            Debug.Log(raycastHit.distance); 
+            //Debug.Log(raycastHit.distance); 
         }
 
         /*if (Input.GetKey(left))

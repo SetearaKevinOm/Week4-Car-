@@ -48,6 +48,11 @@
      <Compile Include="Assets\Scenes\ZCar\Body.cs" />
      <Compile Include="Assets\Scenes\CarTest\Scripts\Camera.cs" />
      <Compile Include="Assets\Scenes\CarTest\Scripts\Wheels.cs" />
+     <Compile Include="Assets\Scenes\ZCar\VehicleBase.cs" />
+     <Compile Include="Assets\Scenes\ZCar\VehicleManager.cs" />
+     <Compile Include="Assets\Scenes\ZCar\BlueCar.cs" />
+     <Compile Include="Assets\Scenes\ZCar\RedCar.cs" />
+     <Compile Include="Assets\Scenes\ZCar\PlayerController.cs" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.2.10f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
