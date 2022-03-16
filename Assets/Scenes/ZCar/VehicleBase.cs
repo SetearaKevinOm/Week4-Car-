@@ -20,11 +20,28 @@ public class VehicleBase : MonoBehaviour
     public GameObject[] frontTyres; 
     public Vector3 localVelocity;
 
-    public bool driverIn; 
-    // Start is called before the first frame update
+    public bool driverIn;
+    public PlayerController playerController;
+    
+    public virtual void Activate()
+    {
+        Debug.Log("Activated");
+    }
+
+    public virtual void Deactivate()
+    {
+        Debug.Log("Deactivated");
+    }
+    
+    public void OnEnable()
+    {
+        //PlayerController += Accelerate;
+    }
+    
     void Start()
     {
-        carPrefabRigidbody = GetComponent<Rigidbody>(); 
+        ActivatedCar();
+        carPrefabRigidbody = GetComponent<Rigidbody>();
     }
     
     private void OnDrawGizmos()
@@ -32,30 +49,61 @@ public class VehicleBase : MonoBehaviour
         Gizmos.DrawSphere(transform.position, 0.5f);
     }
 
-    public void Activate()
+    private void ActivatedCar()
     {
+        playerController.AccelCarEvent += Accelerate;
+        playerController.DecelerateCarEvent += Decelerate;
+        playerController.LeftCarEvent += Left;
+        playerController.RightCarEvent += Right;
+    }
+
+    private void DeactivateCar()
+    {
+        playerController.AccelCarEvent -= Accelerate;
+        playerController.DecelerateCarEvent -= Decelerate;
+        playerController.LeftCarEvent -= Left;
+        playerController.RightCarEvent -= Right;
+    }
+
+    private void RedCamera()
+    {
+        GetComponentInChildren<Camera>().enabled = true;
+    }
+
+    private void Accelerate()
+    {
+        if (driverIn)
+        {
+            carPrefabRigidbody.AddRelativeForce(new Vector3(0f, 0f, accelerationSpeed*2));
+        }
+    }
+
+    private void Decelerate()
+    {
+        if (driverIn)
+        {
+            carPrefabRigidbody.AddRelativeForce(new Vector3(0f, 0f, -5f));
+        }
         
     }
 
-    /*public void Accelerate()
+    private void Left()
     {
-        carPrefabRigidbody.AddRelativeForce(new Vector3(0f, 0f, accelerationSpeed*2));
+        if (driverIn)
+        {
+            carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, -5f, 0f));
+        }
+        
     }
 
-    public void Decelerate()
+    private void Right()
     {
-        carPrefabRigidbody.AddRelativeForce(new Vector3(0f, 0f, -5f));
+        if (driverIn)
+        {
+            carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, 5f, 0f));
+        }
+        
     }
-
-    public void Left()
-    {
-        carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, -5f, 0f));
-    }
-
-    public void Right()
-    {
-        carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, 5f, 0f));
-    }*/
     
 
     // Update is called once per frame
@@ -66,24 +114,24 @@ public class VehicleBase : MonoBehaviour
         
         carPrefabRigidbody.AddRelativeForce(new Vector3(-localVelocity.x,0f,0f));
         
+        /*
         //Debug.Log(localVelocity);
         
-        if (Input.GetKey(accelerate) && driverIn)
+        /*if (Input.GetKey(accelerate) && driverIn)
         {
-            /*frontTyres[0].transform.localRotation =  Quaternion.Euler(0f,0f,0f);
-            frontTyres[1].transform.localRotation =  Quaternion.Euler(0f,0f,0f);*/
+            
             carPrefabRigidbody.AddRelativeForce(new Vector3(0f, 0f, accelerationSpeed));
             if (Input.GetKey(accelerate) && Input.GetKey(boost))
             {
            
                 carPrefabRigidbody.AddRelativeForce(new Vector3(0f, 0f, accelerationSpeed*2));
             }
-        }
+        }#1#
 
         if (Input.GetKey(brake)&& driverIn)
         {
             /*frontTyres[0].transform.localRotation =  Quaternion.Euler(0f,0f,0f);
-            frontTyres[1].transform.localRotation =  Quaternion.Euler(0f,0f,0f);*/
+            frontTyres[1].transform.localRotation =  Quaternion.Euler(0f,0f,0f);#1#
             carPrefabRigidbody.AddRelativeForce(new Vector3(0f, 0f, -5f));
         }
         
@@ -114,7 +162,7 @@ public class VehicleBase : MonoBehaviour
         if (Input.GetKey(right))
         {
             carPrefabRigidbody.AddRelativeTorque(new Vector3(0f, 5f, 0f));
-        }*/
+        }#1#*/
     }
 }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Tyres : MonoBehaviour
@@ -14,14 +15,18 @@ public class Tyres : MonoBehaviour
     public AnimationCurve animationCurve;
 
     public Vector3 localVelocity;
-    
+
+    public Rigidbody chassis;
+
+    public Vector3 origin; 
     //public float suspensionHeight; 
     // Start is called before the first frame update
     void Start()
     {
-       
+        //chassis = GetComponent<SceneManager>().chassis;
     }
-
+    
+    
     // Update is called once per frame
     void Update()
     {
@@ -51,7 +56,14 @@ public class Tyres : MonoBehaviour
             //carObject.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0f,-rayMaxDistance,0f));
             //Debug.Log(raycastHit.distance); 
         }
-
+        
+        /*chassis = chassis.GetComponent<SceneManager>().chassis;
+        origin = transform.localPosition;
+        localVelocity = transform.InverseTransformDirection(chassis.velocity);
+        
+        chassis.AddForceAtPosition(chassis.mass*transform.TransformDirection(new Vector3 (-localVelocity.x,0f,0f)),origin);
+        lateralFrictionCoefficient**/
+            
         /*if (Input.GetKey(left))
         {
             //rightFrontTyre.transform.localRotation = Quaternion.Euler(0f,45f,0f);
